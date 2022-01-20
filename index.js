@@ -90,7 +90,26 @@ const engineerPrompt = () => {
         }
     ])
     .then((answers) => {
-        console.log(answers)
+        console.log(answers);
+        addEmployeePrompt();
+    })
+}
+
+const addEmployeePrompt = () => {
+    return inquirer.prompt([
+        {
+            type: 'confirm',
+            name: 'addEmployee',
+            message: 'Would you like to add another employee?',
+            default: false
+        }
+    ])
+    .then((answers) => {
+        if (answers.addEmployee) {
+            return employeePrompt();
+        } else {
+            return;
+        }
     })
 }
 
