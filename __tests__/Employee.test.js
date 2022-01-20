@@ -30,4 +30,11 @@ test('get employee email address', () => {
     const employee = new Employee("Jon Snow", "1", "jonsnow@aim.com")
 
     expect(employee.getEmail()).toEqual("jonsnow@aim.com")
-})
+});
+
+test('get employee role', () => {
+    
+    const employee = new Employee("Jon Snow", "1", "jonsnow@aim.com")
+
+    expect(employee.getRole()).toEqual("employee")
+});
