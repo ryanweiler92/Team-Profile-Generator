@@ -74,20 +74,29 @@ const engineerPrompt = () => {
                     return false;
                 }
             }
-        },
+        }
+    ])
+    .then((answers) => {
+        console.log(answers);
+        addEmployeePrompt();
+    })
+}
+
+const internPrompt = () => {
+    return inquirer.prompt([
         {
             type: 'input',
-            name: 'githubLink',
-            message: 'Please enter a link to the engineer GitHub. (Please include https://) (Required)',
-            validate: githubLinkInput => {
-                if (githubLinkInput) {
+            name: 'school',
+            message: 'Please enter the name of the school the intern attends. (Required)',
+            validate: schoolInput => {
+                if (schoolInput) {
                     return true
                 } else {
-                    console.log('No GitHub link was entered.')
+                    console.log('No school name was entered.')
                     return false;
                 }
             }
-        }
+        },
     ])
     .then((answers) => {
         console.log(answers);
