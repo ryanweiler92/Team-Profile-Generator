@@ -76,9 +76,22 @@ const engineerPrompt = () => {
             }
         },
         {
-            
+            type: 'input',
+            name: 'githubLink',
+            message: 'Please enter a link to the engineer GitHub. (Please include https://) (Required)',
+            validate: githubLinkInput => {
+                if (githubLinkInput) {
+                    return true
+                } else {
+                    console.log('No GitHub link was entered.')
+                    return false;
+                }
+            }
         }
     ])
+    .then((answers) => {
+        console.log(answers)
+    })
 }
 
 
