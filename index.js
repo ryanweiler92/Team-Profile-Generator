@@ -1,7 +1,8 @@
 const inquirer = require('inquirer');
 
+let employeeCount = 0;
 
-const managerPrompt = employeeData => {
+const managerPrompt = () => {
     return inquirer.prompt([
         {
             type: 'input',
@@ -56,10 +57,6 @@ const managerPrompt = employeeData => {
             }
         }
     ])
-    .then(managerData => {
-        employeeData.manager.push(managerData);
-        console.log(employeeData.manager)
-    })
 };
 
 const employeeRolePrompt = employeeData => {
@@ -74,16 +71,21 @@ const employeeRolePrompt = employeeData => {
             choices: ['Engineer', 'Intern', 'No']
         }
     ])
-    .then(employeeData => {
+    .then(roleData => {
+        employeeData.employees(employeeCount+1).push(roleData)
         console.log(employeeData)
-        if (employeeData.role == 'Engineer'){
-            return engineerPrompt(employeeData)
-        } else if (employeeData.role == 'Intern'){
-            return internPrompt == 'Intern'
-        } else {
-            return
-        }
+
     })
+    // .then(employeeData => {
+    //     console.log(employeeData)
+    //     if (employeeData.role == 'Engineer'){
+    //         return engineerPrompt(employeeData)
+    //     } else if (employeeData.role == 'Intern'){
+    //         return internPrompt == 'Intern'
+    //     } else {
+    //         return
+    //     }
+    // })
 
 }
 
@@ -101,3 +103,6 @@ const employeeRolePrompt = employeeData => {
 
 managerPrompt()
 .then(employeeRolePrompt)
+// .then (employeeData => {
+//     console.log(employeeData)
+// })
