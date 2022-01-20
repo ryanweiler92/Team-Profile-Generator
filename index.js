@@ -1,10 +1,11 @@
 const inquirer = require('inquirer');
+const Employee = require('./lib/Employee')
 
 const employeePrompt = () => {
     return inquirer.prompt([
         {
             type: 'input',
-            name: 'employeeName',
+            name: 'name',
             message: 'Please enter the name of the employee. (Required)',
             validate: employeeNameInput => {
                 if (employeeNameInput) {
@@ -17,7 +18,7 @@ const employeePrompt = () => {
         },
         {
             type: 'input',
-            name: 'employeeId',
+            name: 'id',
             message: 'Please enter the employee ID. (Required)',
             validate: employeeIdInput => {
                 if (employeeIdInput) {
@@ -30,7 +31,7 @@ const employeePrompt = () => {
         },
         {
             type: 'input',
-            name: 'employeeEmail',
+            name: 'email',
             message: 'Please enter the team manager email address. (Required)',
             validate: employeeEmailInput => {
                 if (employeeEmailInput) {
