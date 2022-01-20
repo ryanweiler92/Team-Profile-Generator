@@ -46,15 +46,40 @@ const employeePrompt = () => {
             type: 'list',
             name: 'role',
             message: "What is the role of this employee? (Required)",
-            choices: ['Engineer', 'Intern', 'Manager']
+            choices: ['Engineer', 'Intern']
         }
     ])
     .then((answers) => {
         console.log(answers)
-        new Employee(answers.name, answers.employeeId, answers.email)
+        new Employee(answers.name, answers.employeeId, answers.email);
+        if(answers.role == 'Engineer'){
+            engineerPrompt()
+        } else {
+            internPrompt()
+        }
     })
 };
 
+const engineerPrompt = () => {
+    return inquirer.prompt([
+        {
+            type: 'input',
+            name: 'githubUsername',
+            message: 'Please enter the engineer GitHub username. (Required)',
+            validate: githubUsernameInput => {
+                if (githubUsernameInput) {
+                    return true
+                } else {
+                    console.log('No GitHub username was entered.')
+                    return false;
+                }
+            }
+        },
+        {
+            
+        }
+    ])
+}
 
 
 
