@@ -18,7 +18,7 @@ const employeePrompt = () => {
         },
         {
             type: 'input',
-            name: 'id',
+            name: 'employeeId',
             message: 'Please enter the employee ID. (Required)',
             validate: employeeIdInput => {
                 if (employeeIdInput) {
@@ -32,7 +32,7 @@ const employeePrompt = () => {
         {
             type: 'input',
             name: 'email',
-            message: 'Please enter the team manager email address. (Required)',
+            message: 'Please enter the employee email address. (Required)',
             validate: employeeEmailInput => {
                 if (employeeEmailInput) {
                     return true
@@ -49,12 +49,14 @@ const employeePrompt = () => {
             choices: ['Engineer', 'Intern', 'Manager']
         }
     ])
+    .then((answers) => {
+        console.log(answers)
+        new Employee(answers.name, answers.employeeId, answers.email)
+    })
 };
 
 
 
 
 employeePrompt()
-.then (employeeData => {
-    console.log(employeeData)
-})
+
