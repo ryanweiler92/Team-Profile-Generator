@@ -3,7 +3,10 @@ const Employee = require('./lib/Employee')
 const Manager = require('./lib/Manager')
 const Intern = require('./lib/Intern')
 const Engineer = require('./lib/Engineer')
+const {writeFile, copyFile} = require('./utils/generate-site.js')
+const generatePage = require('./src/page-template')
 
+//employee prompt gets basic info for each employee including name, id & email
 const employeePrompt = () => {
     return inquirer.prompt([
         {
@@ -63,6 +66,7 @@ const employeePrompt = () => {
     })
 };
 
+//gets github username specific to engineer employees
 const engineerPrompt = () => {
     return inquirer.prompt([
         {
@@ -86,6 +90,7 @@ const engineerPrompt = () => {
     })
 }
 
+//gets school name specific to interns
 const internPrompt = () => {
     return inquirer.prompt([
         {
@@ -109,24 +114,7 @@ const internPrompt = () => {
     })
 }
 
-const addEmployeePrompt = () => {
-    return inquirer.prompt([
-        {
-            type: 'confirm',
-            name: 'addEmployee',
-            message: 'Would you like to add another employee?',
-            default: false
-        }
-    ])
-    .then((answers) => {
-        if (answers.addEmployee) {
-            return employeePrompt();
-        } else {
-            return;
-        }
-    })
-};
-
+//seperate manager prompt to ensure the user fills out manager information first
 const managerPrompt = () => {
     return inquirer.prompt([
         {
@@ -176,7 +164,7 @@ const managerPrompt = () => {
 })
 };
 
-
+//gets office number specific to manager
 const manager2Prompt = () => {
     return inquirer.prompt([
         {
@@ -198,6 +186,25 @@ const manager2Prompt = () => {
         addEmployeePrompt();
     })
 }
+
+//asks if user wants to add another employee or if they are done entering employees
+const addEmployeePrompt = () => {
+    return inquirer.prompt([
+        {
+            type: 'confirm',
+            name: 'addEmployee',
+            message: 'Would you like to add another employee?',
+            default: false
+        }
+    ])
+    .then((answers) => {
+        if (answers.addEmployee) {
+            return employeePrompt();
+        } else {
+            generatePage();
+        }
+    })
+};
     
 managerPrompt()
 
