@@ -120,9 +120,79 @@ const addEmployeePrompt = () => {
             return;
         }
     })
+};
+
+const managerPrompt = () => {
+    return inquirer.prompt([
+        {
+            type: 'input',
+            name: 'name',
+            message: 'Please enter the name of the team manager. (Required)',
+            validate: managerNameInput => {
+                if (managerNameInput) {
+                    return true
+                } else {
+                    console.log('No manager name was entered.')
+                    return false;
+                }
+            }
+        },
+        {
+            type: 'input',
+            name: 'managerId',
+            message: 'Please enter the employee ID. (Required)',
+            validate: employeeIdInput => {
+                if (employeeIdInput) {
+                    return true
+                } else {
+                    console.log('No employee ID was entered.')
+                    return false;
+                }
+            }
+        },
+        {
+            type: 'input',
+            name: 'email',
+            message: 'Please enter the manager email address. (Required)',
+            validate: managerEmailInput => {
+                if (managerEmailInput) {
+                    return true
+                } else {
+                    console.log('Please enter the manager email address.')
+                    return false;
+                }
+            }
+        }
+    ])
+    .then((answers) => {
+        console.log(answers)
+        new Employee(answers.name, answers.managerId, answers.email);
+        manager2Prompt();
+})
+};
+
+
+const manager2Prompt = () => {
+    return inquirer.prompt([
+        {
+            type: 'input',
+            name: 'officeNumber',
+            message: 'Please enter the office number of the team manager. (Required)',
+            validate: officeNumberInput => {
+                if (officeNumberInput) {
+                    return true
+                } else {
+                    console.log('No manager name was entered.')
+                    return false;
+                }
+            }
+        }
+    ])
+    .then((answers) => {
+        new Manager(answers.officeNumber)
+        addEmployeePrompt();
+    })
 }
-
-
-
-employeePrompt()
+    
+managerPrompt()
 
