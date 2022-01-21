@@ -3,7 +3,7 @@ const Employee = require('./lib/Employee')
 const Manager = require('./lib/Manager')
 const Intern = require('./lib/Intern')
 const Engineer = require('./lib/Engineer')
-const {writeFile, copyFile} = require('./util/generate-site.js')
+const {writeFile} = require('./util/generate-site.js')
 const generatePage = require('./src/page-template')
 
 let employees = []
@@ -189,7 +189,7 @@ const internPrompt = () => {
         },
     ])
     .then((answers) => {
-        employees.push(new Intern(answers.name, answers.managerId, answers.email, answers.school))
+        employees.push(new Intern(answers.name, answers.employeeId, answers.email, answers.school))
         addEmployeePrompt();
     })
 }
@@ -210,7 +210,16 @@ const addEmployeePrompt = () => {
         if (answers.addEmployee) {
             return employeeRolePrompt();
         } else {
-            generatePage(employees);
+            generatePage(employees)
+            .then(pageHTML => {
+                return writeFile(pageHTML);
+              })
+              .then(writeFileResponse => {
+                console.log(writeFileResponse);
+              })
+              .catch(err => {
+                console.log(err);
+              });
         }
     })
 };
@@ -234,4 +243,5 @@ const employeeRolePrompt = () => {
 };
     
 managerPrompt()
+
 
