@@ -1,5 +1,8 @@
 const inquirer = require('inquirer');
 const Employee = require('./lib/Employee')
+const Manager = require('./lib/Manager')
+const Intern = require('./lib/Intern')
+const Engineer = require('./lib/Engineer')
 
 const employeePrompt = () => {
     return inquirer.prompt([
@@ -78,6 +81,7 @@ const engineerPrompt = () => {
     ])
     .then((answers) => {
         console.log(answers);
+        new Engineer(answers.githubUsername)
         addEmployeePrompt();
     })
 }
@@ -100,6 +104,7 @@ const internPrompt = () => {
     ])
     .then((answers) => {
         console.log(answers);
+        new Intern(answers.school)
         addEmployeePrompt();
     })
 }
