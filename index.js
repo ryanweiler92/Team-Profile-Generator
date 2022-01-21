@@ -211,15 +211,7 @@ const addEmployeePrompt = () => {
             return employeeRolePrompt();
         } else {
             generatePage(employees)
-            .then(pageHTML => {
-                return writeFile(pageHTML);
-              })
-              .then(writeFileResponse => {
-                console.log(writeFileResponse);
-              })
-              .catch(err => {
-                console.log(err);
-              });
+
         }
     })
 };
@@ -244,4 +236,14 @@ const employeeRolePrompt = () => {
     
 managerPrompt()
 
+
+// .then(pageHTML => {
+//     return writeFile(pageHTML);
+//   })
+//   .then(writeFileResponse => {
+//     console.log(writeFileResponse);
+//   })
+//   .catch(err => {
+//     console.log(err);
+//   });
 
