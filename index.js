@@ -66,7 +66,7 @@ const managerPrompt = () => {
     ])
     .then((answers) => {
         employees.push(new Manager(answers.name, answers.managerId, answers.email, answers.officeNumber))
-        addEmployeePrompt();
+        return addEmployeePrompt();
     })
 };
 
@@ -128,7 +128,7 @@ const engineerPrompt = () => {
     ])
     .then((answers) => {
         employees.push(new Engineer(answers.name, answers.employeeId, answers.email, answers.githubUsername))
-        addEmployeePrompt();
+        return addEmployeePrompt();
     })
 }
 
@@ -190,7 +190,7 @@ const internPrompt = () => {
     ])
     .then((answers) => {
         employees.push(new Intern(answers.name, answers.employeeId, answers.email, answers.school))
-        addEmployeePrompt();
+        return addEmployeePrompt();
     })
 }
 
@@ -210,14 +210,31 @@ const addEmployeePrompt = () => {
         if (answers.addEmployee) {
             return employeeRolePrompt();
         } else {
-            generatePage(employees)
-
+            return generatePage(employees)
         }
     })
 };
 
-const employeeRolePrompt = () => {
-    return inquirer.prompt([
+// const employeeRolePrompt = () => {
+//     return inquirer.prompt([
+//         {
+//             type: 'list',
+//             name: 'role',
+//             message: "What is the role of this employee? (Required)",
+//             choices: ['Engineer', 'Intern']
+//         }
+//     ])
+//     .then((answers) => {
+//         if(answers.role == 'Engineer'){
+//             return engineerPrompt()
+//         } else {
+//             return internPrompt()
+//         }
+//     })
+// };
+    
+const employeeRolePrompt = async() => {
+    const answers = await inquirer.prompt([
         {
             type: 'list',
             name: 'role',
@@ -225,16 +242,34 @@ const employeeRolePrompt = () => {
             choices: ['Engineer', 'Intern']
         }
     ])
-    .then((answers) => {
-        if(answers.role == 'Engineer'){
-            engineerPrompt()
-        } else {
-            internPrompt()
-        }
-    })
-};
+
     
-managerPrompt()
+    
+    if(answers.role == 'Engineer'){
+        return engineerPrompt()
+    } else {
+        return internPrompt()
+    }
+    
+};
+
+
+const init = async function () {
+
+    const pageHTML = await managerPrompt();
+
+    console.log(pageHTML)
+
+    writeFile(pageHTML)
+};
+
+init();
+
+
+
+
+
+
 
 
 // .then(pageHTML => {

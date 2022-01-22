@@ -1,12 +1,18 @@
 const generateCards = employeeData => {
+    console.log(employeeData)
 
     for (let i = 0; i < employeeData.length; i++) {
 
-        if ([i] == "Manager") {
-            let name = [i].name
-            let employeeId = [i].employeeId;
-            let email = [i].email;
-            let officeNumber = [i].officeNumber 
+        
+        console.log("logging from line 7", employeeData[i].getRole())
+
+        if (employeeData[i].getRole() === "Manager") {
+            
+            let name = employeeData[i].name
+            console.log(employeeData[i].name)
+            let employeeId = employeeData[i].employeeId;
+            let email = employeeData[i].email;
+            let officeNumber = employeeData[i].officeNumber 
            return `
             <div class="col-12 col-md-6 col-lg-4">
             <div class="card">
@@ -27,11 +33,11 @@ const generateCards = employeeData => {
             </div>
           </div>
           `
-        } else if ([i] == "Engineer") {
-            let name = [i].name
-            let employeeId = [i].employeeId;
-            let email = [i].email;
-            let github = [i].githubUsername
+        } else if (employeeData[i] == "Engineer") {
+            let name = employeeData[i].name
+            let employeeId = employeeData[i].employeeId;
+            let email = employeeData[i].email;
+            let github = employeeData[i].githubUsername
 
             return`
             <div class="col-12 col-md-6 col-lg-4">
@@ -53,11 +59,11 @@ const generateCards = employeeData => {
             </div>
           </div>
             `
-        } else if ([i] == "Intern") {
-            let name = [i].name
-            let employeeId = [i].employeeId;
-            let email = [i].email;
-            let school = [i].school
+        } else if (employeeData[i] == "Intern") {
+            let name = employeeData[i].name
+            let employeeId = employeeData[i].employeeId;
+            let email = employeeData[i].email;
+            let school = employeeData[i].school
             return `
             <div class="col-12 col-md-6 col-lg-4">
             <div class="card">
@@ -78,6 +84,8 @@ const generateCards = employeeData => {
             </div>
           </div>
             `
+        } else {
+            console.log("I'm in the wrong loop")
         }
 
     }
@@ -90,8 +98,6 @@ const generateCards = employeeData => {
 
 
 module.exports = employeeData => {
-
-console.log(employeeData)
 
 return `
 <!DOCTYPE html>
@@ -126,20 +132,8 @@ return `
 
     </body>
     </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
 `
 
 }
+
 
