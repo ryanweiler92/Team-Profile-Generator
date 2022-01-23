@@ -122,69 +122,9 @@ return `
     ${generateCards(employeeData)}
 
 
-
     </div>
 
     </body>
     </html>
 `
-
-}
-
-
-// const generateCards = employeeData => {
-
-//   const managers = employeeData.filter(role => {
-//     if (employeeData.getRole() === "Manager") {
-//       return true
-//     } else {
-//       return false
-//     }
-//   });
-
-//   const engineers = employeeData.filter(role => {
-//     if (employeeData.getRole() === "Engineer") {
-//       return true
-//     } else {
-//       return false;
-//     }
-//   });
-
-//   const interns = employeeData.filter(role => {
-//     if (employeeData.getRole() === "Intern") {
-//       return true;
-//     } else {
-//       return false
-//     }
-//   });
-
-
-//   const managersHtmlArr = (managers) => {
-//       console.log(managers.manager.name)
-//       console.log(Manager.name)
-//       console.log(managers)
-//       console.log(managers.name)
-//                return `
-//             <div class="col-12 col-md-6 col-lg-4">
-//             <div class="card">
-//               <div class="card-header bg-primary text-light">
-//                 <h3>${managers.manager.name}<h3>
-//                   <div class="container d-flex justify-content-start m-0 p-0">
-//                 <span class="material-icons-outlined">business_center</span>
-//                 <h4 class="ps-2">Manager</h4>
-//                 </div>
-//               </div>
-//               <div class="card-body bg-light">
-//                 <ul class="list-group list-group">
-//                   <li class="list-group-item">ID: ${managers.Manger.employeeId}</li>
-//                   <li class="list-group-item">Email: ${managers.Manger.email}</li>
-//                   <li class="list-group-item">Office number: ${managers.Manager.officeNumber}</li>
-//                 </ul>
-//               </div>
-//             </div>
-//           </div>
-//           `
-
-//   }
-
-// }
+};
