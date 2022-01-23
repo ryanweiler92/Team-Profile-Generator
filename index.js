@@ -233,27 +233,6 @@ const employeeRolePrompt = () => {
     })
 };
     
-// const employeeRolePrompt = async() => {
-//     const answers = await inquirer.prompt([
-//         {
-//             type: 'list',
-//             name: 'role',
-//             message: "What is the role of this employee? (Required)",
-//             choices: ['Engineer', 'Intern']
-//         }
-//     ])
-
-    
-    
-//     if(answers.role == 'Engineer'){
-//         return engineerPrompt()
-//     } else {
-//         return internPrompt()
-//     }
-    
-// };
-
-
 const init = async function () {
 
     const pageHTML = await managerPrompt();
@@ -264,19 +243,4 @@ const init = async function () {
 init();
 
 
-
-
-
-
-
-
-// .then(pageHTML => {
-//     return writeFile(pageHTML);
-//   })
-//   .then(writeFileResponse => {
-//     console.log(writeFileResponse);
-//   })
-//   .catch(err => {
-//     console.log(err);
-//   });
 

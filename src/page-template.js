@@ -1,14 +1,10 @@
 let employees = []
 const generateCards = employeeData => {
     console.log(employeeData)
-    console.log(employeeData.length)
-
-    let count = 0;
 
     for (let i = 0; i < employeeData.length; i++) {
 
         if (employeeData[i].getRole() === "Manager") {
-            console.log("iterating through manager")
             let name = employeeData[i].name
             let employeeId = employeeData[i].employeeId;
             let email = employeeData[i].email;
@@ -26,7 +22,7 @@ const generateCards = employeeData => {
               <div class="card-body bg-light">
                 <ul class="list-group list-group">
                   <li class="list-group-item">ID: ${employeeId}</li>
-                  <li class="list-group-item">Email: ${email}</li>
+                  <li class="list-group-item">Email: <a href="mailto:${email} target="_blank">${email}</a></li>
                   <li class="list-group-item">Office number: ${officeNumber}</li>
                 </ul>
               </div>
@@ -39,8 +35,7 @@ const generateCards = employeeData => {
             let name = employeeData[i].name
             let employeeId = employeeData[i].employeeId;
             let email = employeeData[i].email;
-            let github = employeeData[i].githubUsername
-            console.log("iterating through engineer")
+            let github = employeeData[i].githubUsername;
             const engineer =`
             <div class="col-12 col-md-6 col-lg-4">
             <div class="card">
@@ -54,15 +49,15 @@ const generateCards = employeeData => {
               <div class="card-body bg-light">
                 <ul class="list-group list-group">
                   <li class="list-group-item">ID: ${employeeId}</li>
-                  <li class="list-group-item">Email: ${email}</li>
-                  <li class="list-group-item">GitHub: <a>${github}</a></li>
+                  <li class="list-group-item">Email: <a href="mailto:${email} target="_blank">${email}</a></li>
+                  <li class="list-group-item">GitHub: <a href="https://www.github.com/${github} target="_blank">${github}</a></li>
                 </ul>
               </div>
             </div>
           </div>
             `;
-
             employees.push(engineer)
+
         } else if (employeeData[i].getRole() === "Intern") {
             let name = employeeData[i].name
             let employeeId = employeeData[i].employeeId;
@@ -81,22 +76,18 @@ const generateCards = employeeData => {
               <div class="card-body bg-light">
                 <ul class="list-group list-group">
                   <li class="list-group-item">ID: ${employeeId}</li>
-                  <li class="list-group-item">Email: ${email}</li>
+                  <li class="list-group-item">Email: <a href="mailto:${email} target="_blank">${email}</a></li>
                   <li class="list-group-item">School: ${school}</li>
                 </ul>
               </div>
             </div>
           </div>
             `;
-
             employees.push(intern)
-        } else {
-            console.log("I'm in the wrong loop")
-        }
-
+        } 
     }
-    console.log(employees)
-    return employees
+    console.log("Check out your page in the dist folder!")
+    return employees.join(' ')
 };
 
 
