@@ -50,7 +50,7 @@ const generateCards = employeeData => {
                 <ul class="list-group list-group">
                   <li class="list-group-item">ID: ${employeeId}</li>
                   <li class="list-group-item">Email: <a href="mailto:${email} target="_blank">${email}</a></li>
-                  <li class="list-group-item">GitHub: <a href="https://www.github.com/${github} target="_blank">${github}</a></li>
+                  <li class="list-group-item">GitHub: <a href="https://www.github.com/${github}" target="_blank">${github}</a></li>
                 </ul>
               </div>
             </div>
