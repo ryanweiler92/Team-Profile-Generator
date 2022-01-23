@@ -215,26 +215,8 @@ const addEmployeePrompt = () => {
     })
 };
 
-// const employeeRolePrompt = () => {
-//     return inquirer.prompt([
-//         {
-//             type: 'list',
-//             name: 'role',
-//             message: "What is the role of this employee? (Required)",
-//             choices: ['Engineer', 'Intern']
-//         }
-//     ])
-//     .then((answers) => {
-//         if(answers.role == 'Engineer'){
-//             return engineerPrompt()
-//         } else {
-//             return internPrompt()
-//         }
-//     })
-// };
-    
-const employeeRolePrompt = async() => {
-    const answers = await inquirer.prompt([
+const employeeRolePrompt = () => {
+    return inquirer.prompt([
         {
             type: 'list',
             name: 'role',
@@ -242,23 +224,39 @@ const employeeRolePrompt = async() => {
             choices: ['Engineer', 'Intern']
         }
     ])
+    .then((answers) => {
+        if(answers.role == 'Engineer'){
+            return engineerPrompt()
+        } else {
+            return internPrompt()
+        }
+    })
+};
+    
+// const employeeRolePrompt = async() => {
+//     const answers = await inquirer.prompt([
+//         {
+//             type: 'list',
+//             name: 'role',
+//             message: "What is the role of this employee? (Required)",
+//             choices: ['Engineer', 'Intern']
+//         }
+//     ])
 
     
     
-    if(answers.role == 'Engineer'){
-        return engineerPrompt()
-    } else {
-        return internPrompt()
-    }
+//     if(answers.role == 'Engineer'){
+//         return engineerPrompt()
+//     } else {
+//         return internPrompt()
+//     }
     
-};
+// };
 
 
 const init = async function () {
 
     const pageHTML = await managerPrompt();
-
-    console.log(pageHTML)
 
     writeFile(pageHTML)
 };
