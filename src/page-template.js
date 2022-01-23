@@ -1,102 +1,94 @@
 
+const generateCards = employeeData => {
+    console.log(employeeData)
+    console.log(employeeData.length)
 
+    for (let i = 0; i < employeeData.length; i++) {
 
+        if (employeeData[i].getRole() === "Manager") {
+            console.log("iterating through manager")
+            let name = employeeData[i].name
+            let employeeId = employeeData[i].employeeId;
+            let email = employeeData[i].email;
+            let officeNumber = employeeData[i].officeNumber 
+           return `
+            <div class="col-12 col-md-6 col-lg-4">
+            <div class="card">
+              <div class="card-header bg-primary text-light">
+                <h3>${name}<h3>
+                  <div class="container d-flex justify-content-start m-0 p-0">
+                <span class="material-icons-outlined">business_center</span>
+                <h4 class="ps-2">Manager</h4>
+                </div>
+              </div>
+              <div class="card-body bg-light">
+                <ul class="list-group list-group">
+                  <li class="list-group-item">ID: ${employeeId}</li>
+                  <li class="list-group-item">Email: ${email}</li>
+                  <li class="list-group-item">Office number: ${officeNumber}</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          `
+        } else if (employeeData[i].getRole() === "Engineer") {
+            let name = employeeData[i].name
+            let employeeId = employeeData[i].employeeId;
+            let email = employeeData[i].email;
+            let github = employeeData[i].githubUsername
+            console.log("iterating through engineer")
+            return`
+            <div class="col-12 col-md-6 col-lg-4">
+            <div class="card">
+              <div class="card-header bg-primary text-light">
+                <h3>${name}<h3>
+                  <div class="container d-flex justify-content-start m-0 p-0">
+                <span class="material-icons-outlined">construction</span>
+                <h4 class="ps-2">Engineer</h4>
+                </div>
+              </div>
+              <div class="card-body bg-light">
+                <ul class="list-group list-group">
+                  <li class="list-group-item">ID: ${employeeId}</li>
+                  <li class="list-group-item">Email: ${email}</li>
+                  <li class="list-group-item">GitHub: <a>${github}</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+            `
+        } else if (employeeData[i].getRole() === "Intern") {
+            let name = employeeData[i].name
+            let employeeId = employeeData[i].employeeId;
+            let email = employeeData[i].email;
+            let school = employeeData[i].school
+            return `
+            <div class="col-12 col-md-6 col-lg-4">
+            <div class="card">
+              <div class="card-header bg-primary text-light">
+                <h3>${name}<h3>
+                  <div class="container d-flex justify-content-start m-0 p-0">
+                <span class="material-icons-outlined">school</span>
+                <h4 class="ps-2">Intern</h4>
+                </div>
+              </div>
+              <div class="card-body bg-light">
+                <ul class="list-group list-group">
+                  <li class="list-group-item">ID: ${employeeId}</li>
+                  <li class="list-group-item">Email: ${email}</li>
+                  <li class="list-group-item">School: ${school}</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+            `
+        } else {
+            console.log("I'm in the wrong loop")
+        }
 
+    }
 
-
-
-
-
-// const generateCards = employeeData => {
-//     console.log(employeeData)
-//     console.log(employeeData.length)
-
-//     for (let i = 0; i < employeeData.length; i++) {
-
-//         if (employeeData[i].getRole() === "Manager") {
-//             console.log("iterating through manager")
-//             let name = employeeData[i].name
-//             let employeeId = employeeData[i].employeeId;
-//             let email = employeeData[i].email;
-//             let officeNumber = employeeData[i].officeNumber 
-//            return `
-//             <div class="col-12 col-md-6 col-lg-4">
-//             <div class="card">
-//               <div class="card-header bg-primary text-light">
-//                 <h3>${name}<h3>
-//                   <div class="container d-flex justify-content-start m-0 p-0">
-//                 <span class="material-icons-outlined">business_center</span>
-//                 <h4 class="ps-2">Manager</h4>
-//                 </div>
-//               </div>
-//               <div class="card-body bg-light">
-//                 <ul class="list-group list-group">
-//                   <li class="list-group-item">ID: ${employeeId}</li>
-//                   <li class="list-group-item">Email: ${email}</li>
-//                   <li class="list-group-item">Office number: ${officeNumber}</li>
-//                 </ul>
-//               </div>
-//             </div>
-//           </div>
-//           `
-//         } else if (employeeData[i].getRole() === "Engineer") {
-//             let name = employeeData[i].name
-//             let employeeId = employeeData[i].employeeId;
-//             let email = employeeData[i].email;
-//             let github = employeeData[i].githubUsername
-//             console.log("iterating through engineer")
-//             return`
-//             <div class="col-12 col-md-6 col-lg-4">
-//             <div class="card">
-//               <div class="card-header bg-primary text-light">
-//                 <h3>${name}<h3>
-//                   <div class="container d-flex justify-content-start m-0 p-0">
-//                 <span class="material-icons-outlined">construction</span>
-//                 <h4 class="ps-2">Engineer</h4>
-//                 </div>
-//               </div>
-//               <div class="card-body bg-light">
-//                 <ul class="list-group list-group">
-//                   <li class="list-group-item">ID: ${employeeId}</li>
-//                   <li class="list-group-item">Email: ${email}</li>
-//                   <li class="list-group-item">GitHub: <a>${github}</a></li>
-//                 </ul>
-//               </div>
-//             </div>
-//           </div>
-//             `
-//         } else if (employeeData[i].getRole() === "Intern") {
-//             let name = employeeData[i].name
-//             let employeeId = employeeData[i].employeeId;
-//             let email = employeeData[i].email;
-//             let school = employeeData[i].school
-//             return `
-//             <div class="col-12 col-md-6 col-lg-4">
-//             <div class="card">
-//               <div class="card-header bg-primary text-light">
-//                 <h3>${name}<h3>
-//                   <div class="container d-flex justify-content-start m-0 p-0">
-//                 <span class="material-icons-outlined">school</span>
-//                 <h4 class="ps-2">Intern</h4>
-//                 </div>
-//               </div>
-//               <div class="card-body bg-light">
-//                 <ul class="list-group list-group">
-//                   <li class="list-group-item">ID: ${employeeId}</li>
-//                   <li class="list-group-item">Email: ${email}</li>
-//                   <li class="list-group-item">School: ${school}</li>
-//                 </ul>
-//               </div>
-//             </div>
-//           </div>
-//             `
-//         } else {
-//             console.log("I'm in the wrong loop")
-//         }
-
-//     }
-
-// };
+};
 
 
 
