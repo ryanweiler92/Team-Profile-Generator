@@ -1,7 +1,9 @@
-
+let employees = []
 const generateCards = employeeData => {
     console.log(employeeData)
     console.log(employeeData.length)
+
+    let count = 0;
 
     for (let i = 0; i < employeeData.length; i++) {
 
@@ -10,8 +12,8 @@ const generateCards = employeeData => {
             let name = employeeData[i].name
             let employeeId = employeeData[i].employeeId;
             let email = employeeData[i].email;
-            let officeNumber = employeeData[i].officeNumber 
-           return `
+            let officeNumber = employeeData[i].officeNumber; 
+           const manager = `
             <div class="col-12 col-md-6 col-lg-4">
             <div class="card">
               <div class="card-header bg-primary text-light">
@@ -30,14 +32,16 @@ const generateCards = employeeData => {
               </div>
             </div>
           </div>
-          `
+          `;
+          employees.push(manager)
+
         } else if (employeeData[i].getRole() === "Engineer") {
             let name = employeeData[i].name
             let employeeId = employeeData[i].employeeId;
             let email = employeeData[i].email;
             let github = employeeData[i].githubUsername
             console.log("iterating through engineer")
-            return`
+            const engineer =`
             <div class="col-12 col-md-6 col-lg-4">
             <div class="card">
               <div class="card-header bg-primary text-light">
@@ -56,13 +60,15 @@ const generateCards = employeeData => {
               </div>
             </div>
           </div>
-            `
+            `;
+
+            employees.push(engineer)
         } else if (employeeData[i].getRole() === "Intern") {
             let name = employeeData[i].name
             let employeeId = employeeData[i].employeeId;
             let email = employeeData[i].email;
             let school = employeeData[i].school
-            return `
+            const intern = `
             <div class="col-12 col-md-6 col-lg-4">
             <div class="card">
               <div class="card-header bg-primary text-light">
@@ -81,17 +87,17 @@ const generateCards = employeeData => {
               </div>
             </div>
           </div>
-            `
+            `;
+
+            employees.push(intern)
         } else {
             console.log("I'm in the wrong loop")
         }
 
     }
-
+    console.log(employees)
+    return employees
 };
-
-
-
 
 
 
